@@ -1,0 +1,18 @@
+simulation:
+  interval: 1
+
+temperature:
+  normal_min: 20
+  normal_max: 60
+  warning: 55
+  critical: 60
+
+pressure:
+  normal_min: 950
+  normal_max: 1050
+  warning: 1040
+  critical: 1050
+
+imu:
+  acceleration_warning: 12
+  acceleration_critical: 15
