@@ -755,3 +755,32 @@ h1, h2, h3 {
     justify-content: space-between;
   }
 }
+
+
+/* Sensor failure state */
+.status-badge[data-status="sensor_failure"] {
+  background: #eef1f5;
+  color: var(--color-text-secondary);
+}
+
+.severity-pill[data-severity="sensor_failure"] {
+  background: #eef1f5;
+  color: var(--color-text-secondary);
+}
+
+.altitude-readout {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--color-border);
+  color: var(--color-text-secondary);
+  font-size: 12px;
+}
+
+.altitude-readout strong {
+  font-size: 17px;
+  color: var(--color-text-primary);
+  font-variant-numeric: tabular-nums;
+}

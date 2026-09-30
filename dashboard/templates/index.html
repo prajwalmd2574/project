@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Remote Board Monitoring &mdash; Dashboard</title>
+  <title>Remote Telemetry Monitoring &mdash; Dashboard</title>
   <link rel="stylesheet" href="{{ url_for("static", filename="css/style.css") }}" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+  <script src="{{ url_for('static', filename='js/chart.umd.min.js') }}"></script>
 </head>
 <body>
   <div class="app-shell">
@@ -13,9 +13,9 @@
     <!-- ============ SIDEBAR ============ -->
     <aside class="sidebar">
       <div class="sidebar-brand">
-        <div class="brand-mark">RB</div>
+        <div class="brand-mark">RT</div>
         <div class="brand-text">
-          <span class="brand-line">Remote Board</span>
+          <span class="brand-line">Remote Telemetry</span>
           <span class="brand-line">Monitoring</span>
         </div>
       </div>
@@ -32,8 +32,8 @@
       </nav>
 
       <div class="sidebar-footer">
-        <span class="sidebar-footer-label">Firmware</span>
-        <span class="sidebar-footer-value">v2.3.1</span>
+        <span class="sidebar-footer-label">Transport</span>
+        <span class="sidebar-footer-value">MQTT</span>
       </div>
     </aside>
 
@@ -106,7 +106,7 @@
             </div>
             <div class="summary-value-row">
               <span class="summary-value" id="imuCurrentValue">--</span>
-              <span class="summary-unit">g RMS</span>
+              <span class="summary-unit">m/s² RMS</span>
               <span class="trend-indicator" id="imuTrend" data-direction="flat">&mdash;</span>
             </div>
           </article>
@@ -140,7 +140,7 @@
             <div class="chart-card">
               <div class="chart-card-head">
                 <span>IMU Acceleration</span>
-                <span class="chart-card-unit">g</span>
+                <span class="chart-card-unit">m/s²</span>
               </div>
               <div class="chart-canvas-wrap">
                 <canvas id="imuChart"></canvas>
@@ -186,6 +186,11 @@
                 <div><dt>Max</dt><dd id="pressureMax">--</dd></div>
                 <div><dt>Average</dt><dd id="pressureAvg">--</dd></div>
               </dl>
+              <div class="altitude-readout">
+                <span>Altitude</span>
+                <strong id="altitudeValue">--</strong>
+                <span>m</span>
+              </div>
             </div>
 
             <div class="value-card" data-sensor="imu">
@@ -195,7 +200,7 @@
               </div>
 
               <div class="imu-subgroup">
-                <span class="imu-subgroup-label">Accelerometer (g)</span>
+                <span class="imu-subgroup-label">Accelerometer (m/s²)</span>
                 <dl class="value-stat-list value-stat-list--triplet">
                   <div><dt>X</dt><dd id="accelX">--</dd></div>
                   <div><dt>Y</dt><dd id="accelY">--</dd></div>
@@ -214,7 +219,7 @@
 
               <div class="value-card-main value-card-main--rms">
                 <span class="value-card-big" id="imuRmsValue">--</span>
-                <span class="value-card-unit">g RMS</span>
+                <span class="value-card-unit">m/s² RMS</span>
               </div>
             </div>
 
@@ -225,7 +230,7 @@
         <section class="panel" aria-label="Recent alerts">
           <div class="panel-head">
             <h2>Recent Alerts</h2>
-            <span class="panel-head-meta" id="alertCount">0 active</span>
+            <span class="panel-head-meta" id="alertCount">0 detected</span>
           </div>
           <div class="table-wrap">
             <table class="alerts-table">
